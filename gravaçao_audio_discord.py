@@ -21,7 +21,7 @@ async def record(ctx):
     voice = ctx.author.voice
 
     if not voice:
-        return await ctx.respond("You aren't in a voice channel!")
+        return await ctx.respond("Você não está em um canal de voz")
 
     # limpa conexões fantasmas e aguarda estabilidade
     if ctx.voice_client:
@@ -51,7 +51,7 @@ async def record(ctx):
             once_done,
             ctx.channel
         )
-        await ctx.respond("Started recording!")
+        await ctx.respond("Começou a gravar!")
     except Exception as e:
         await ctx.respond(f"Erro ao iniciar gravação: {e}")
 
@@ -71,9 +71,9 @@ async def stop_recording(ctx):
         vc = connections[ctx.guild.id]
         vc.stop_recording()
         del connections[ctx.guild.id]
-        await ctx.respond("Stopped recording!") 
+        await ctx.respond("Parei de gravar!") 
     else:
-        await ctx.respond("I am currently not recording here.")
+        await ctx.respond("Não estou gravando nada!")
 
 TOKEN = os.getenv('DISCORD_TOKEN')
 
